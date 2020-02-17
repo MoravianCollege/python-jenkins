@@ -5,7 +5,7 @@ pipeline {
   stages {
     stage('Unit Tests') {
       steps {
-          sh 'source ./run_tests'
+          sh 'bash run_tests'
       }
     }
     stage('Static Analysis') {
