@@ -5,20 +5,18 @@ pipeline {
   stages {
     stage('Unit Tests') {
       steps {
-        sh 'echo $PATH'
-        withPythonEnv('python'){
-          sh 'echo $PATH'
-          sh 'pip install -r requirements.txt'
-          sh 'pip install .'
-          sh 'pytest'
-        }
+          sh '''
+            python3 -m venv .venv
+            source .venv/bin/activate
+            pip install -r requirements.txt
+            pip install .
+            pytest
+          '''
       }
     }
     stage('Static Analysis') {
       steps {
-        withPythonEnv('python'){
           sh 'pylint src/pyjen/*.py tests/*.py'
-        }
       }
     }
   }
