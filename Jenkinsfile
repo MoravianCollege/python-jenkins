@@ -3,20 +3,31 @@ pipeline {
     dockerfile true
   }
   stages {
-    stage('Unit Tests') {
+    stage {'Create Virtual Environment'} {
       steps {
         sh '''
           python3 -m venv .venv
           . .venv/bin/activate
           pip install -r requirements.txt
           pip install .
+        '''
+      }
+    }
+
+    stage('Unit Tests') {
+      steps {
+        sh '''
+          . .venv/bin/activate
           pytest
         '''
       }
     }
     stage('Static Analysis') {
       steps {
-          sh 'pylint src/pyjen/*.py tests/*.py'
+        sh '''
+          . .venv/bin/activate
+          pylint src/pyjen/*.py tests/*.py
+        '''
       }
     }
   }
