@@ -6,7 +6,6 @@ pipeline {
     stage('Unit Tests') {
       steps {
           sh './run_tests'
-        }
       }
     }
     stage('Static Analysis') {
