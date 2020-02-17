@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    dockerfile true
+    dockerfile
     {
       args '-u 0:0'
     }
