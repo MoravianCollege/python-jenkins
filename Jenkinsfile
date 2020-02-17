@@ -5,14 +5,14 @@ pipeline {
   stages {
     stage('Unit Tests') {
       steps {
-          sh 'bash run_tests'
+          sh 'pip install -r requirements.txt'
+          sh 'pip install .'
+          sh 'pytest'
       }
     }
     stage('Static Analysis') {
       steps {
-        withPythonEnv('python'){
           sh 'pylint src/pyjen/*.py tests/*.py'
-        }
       }
     }
   }
