@@ -15,7 +15,7 @@ pipeline {
     }
     stage('Static Analysis') {
       steps {
-        sh 'pylint src/cs334demo/*.py tests/*.py'
+        sh 'pylint src/pyjen/*.py tests/*.py'
       }
     }
   }
