@@ -1,8 +1,8 @@
 pipeline {
   agent {
-    docker {
-      image 'python:3.8'
-      args '-u jenkins:jenkins'
+    dockerfile {
+      filename Dockerfile
+      args '-u tester:tester'
     }
   }
   stages {
