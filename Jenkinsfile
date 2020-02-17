@@ -5,7 +5,7 @@ pipeline {
   stages {
     stage('Unit Tests') {
       steps {
-          sh 'tox --workdir /tmp/$(basename ${WORKSPACE})/tox-py38'
+          sh 'bash run_tests'
       }
     }
     stage('Static Analysis') {
