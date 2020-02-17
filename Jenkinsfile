@@ -5,8 +5,8 @@ pipeline {
   stages {
     stage('Unit Tests') {
       steps {
-        sh 'pip install -r requirements.txt'
-        sh 'pip install -e .'
+        sh 'pip install -r requirements.txt --user'
+        sh 'pip install -e . --user'
         sh 'pytest'
       }
     }
