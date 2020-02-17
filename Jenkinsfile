@@ -9,8 +9,8 @@ pipeline {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
           withPythonEnv('python') {
-            sh 'pip install -r requirements.txt'
-            sh 'pip install .'
+            sh 'pip install --user -r requirements.txt'
+            sh 'pip install --user .'
             sh 'pytest'
           }
         }
