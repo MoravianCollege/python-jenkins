@@ -5,10 +5,7 @@ pipeline {
   stages {
     stage('Unit Tests') {
       steps {
-        withPythonEnv('python3'){
-          sh 'pip install -r requirements.txt'
-          sh 'pip install -e .'
-          sh 'pytest'
+          sh './run_tests'
         }
       }
     }
