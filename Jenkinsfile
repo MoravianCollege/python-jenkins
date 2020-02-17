@@ -5,9 +5,13 @@ pipeline {
   stages {
     stage('Unit Tests') {
       steps {
-            sh 'pip install --user -r requirements.txt'
-            sh 'pip install --user .'
-            sh 'pytest'
+        sh '''
+          python3 -m env .venv
+          . .venv/bin/activate
+          pip install -r requirements.txt
+          pip install .
+          pytest
+        '''
       }
     }
     stage('Static Analysis') {
